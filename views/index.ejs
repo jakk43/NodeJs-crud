@@ -1,0 +1,63 @@
+<title>BOOK</title>
+<% if (error_msg[0]) { %>
+<div class="alert alert-danger"> <%= error_msg %> </div>
+<% } %>
+
+<% if (success_msg[0]) { %>
+<div class="alert alert-success"> <%= success_msg %> </div>
+<% } %>
+
+<div class="card">
+    <div class="card-header">
+        <ul class="nav nav-pills w-100 ">
+            <li class="nav-link h5">Book</li>
+            <li class="nav-link  ms-auto">
+                <a href="/add" class="nav-link active">Add book</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+
+
+        <% if(book) { %>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% book.map((val,index)=> { %>
+                <tr>
+                    <th scope="row"><%=index+1 %></th>
+                    <td><%=val.name%></td>
+                    <td><%=val.author%></td>
+                    <td><%=val.price%></td>
+                    <td>
+                        <div class="d-flex">
+                            <a href="/edit/<%=val._id%>" class="shadow-none btn btn-warning">
+                                EDIT
+                            </a>
+                            <a href="/delete/<%=val._id%>" class="shadow-none btn btn-danger ms-3">
+                                DELETE
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+
+        <% } %>
+
+        <% if (!book) { %>
+        <div class="text-center danger"> NO BOOK FOUND!</div>
+        <% } %>
+
+    </div>
+</div>

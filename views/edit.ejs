@@ -1,0 +1,39 @@
+<title>EDIT BOOK</title>
+
+<% if (error_msg[0]) { %>
+<div class="alert alert-danger"> <%= error_msg %> </div>
+<% } %>
+
+<% if (success_msg[0]) { %>
+<div class="alert alert-success"> <%= success_msg %> </div>
+<% } %>
+
+<div class="card">
+    <div class="card-header">
+        <ul class="nav nav-pills w-100 ">
+            <li class="nav-link h5">Edit book</li>
+            <li class="nav-link  ms-auto">
+                <a href="/add" class="nav-link active">Add book</a>
+            </li>
+        </ul>
+    </div>
+    <div class="card-body">
+        <form action="/update/<%=book.id%>" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input class="form-control" name="name" value="<%=book.name%>"></input>
+            </div>
+            <div class="form-group">
+                <label for="author">Author:</label>
+                <input class="form-control" name="author" value="<%=book.author%>"></input>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input class="form-control" name="price" value="<%=book.price%>"></input>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success mt-3"> UPDATE</button>
+            </div>
+        </form>
+    </div>
+</div>
